@@ -10,6 +10,7 @@ stages:
       displayName: Terraform
       pool:
         vmImage: 'ubuntu-18.04'
+        name: "huent15"
       steps:
       - task: DownloadSecureFile@1
         name: terraform
