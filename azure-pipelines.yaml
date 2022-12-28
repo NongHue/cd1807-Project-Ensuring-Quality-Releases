@@ -38,7 +38,7 @@ stages:
           sshKeySecureFile: 'id_rsa'
 
 
-      - task: TerraformTaskV2@2
+      - task: TerraformTaskV3@3
         displayName: Terraform Init
         inputs:
           provider: 'azurerm'
@@ -51,21 +51,21 @@ stages:
           backendAzureRmKey: 'terraform.tfstate'
           
 
-      - task: TerraformTaskV2@2
+      - task: TerraformTaskV3@3
         displayName: Terraform Validate
         inputs:
           provider: 'azurerm'
           command: 'validate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
           backendServiceArm: 'udacity-deploy-azure-service-connection'
-      - task: TerraformTaskV2@2
+      - task: TerraformTaskV3@3
         displayName: Terraform Plan
         inputs:
           provider: 'azurerm'
           command: 'plan'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
           environmentServiceNameAzureRM: 'udacity-deploy-azure-service-connection'
-      - task: TerraformTaskV2@2
+      - task: TerraformTaskV3@3
         displayName: Terraform Apply
         inputs:
           provider: 'azurerm'
