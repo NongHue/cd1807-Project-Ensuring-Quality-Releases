@@ -45,9 +45,9 @@ stages:
           command: 'init'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
           backendServiceArm: 'udacity-deploy-azure-service-connection'
-          backendAzureRmResourceGroupName: 'thoanvtt-test-01999-rg'
+          backendAzureRmResourceGroupName: 'Devops'
           backendAzureRmStorageAccountName: '$(StorageAccountName)'
-          backendAzureRmContainerName: 'thoanvttcontainer01999'
+          backendAzureRmContainerName: 'huent15'
           backendAzureRmKey: 'terraform.tfstate'
           
 
@@ -115,7 +115,7 @@ stages:
     - deployment: FakeRestAPI
       pool:
         vmImage: 'Ubuntu-18.04'
-      environment: 'prj3'
+      environment: 'test'
       strategy:
         runOnce:
           deploy:
@@ -123,8 +123,8 @@ stages:
             - task: AzureWebApp@1
               displayName: 'Deploy Azure Web App'
               inputs:
-                azureSubscription: 'udacity-deploy-azure-service-connection'
-                appName: 'udacity-thoanvtt-project03-app-AppService'
+                azureSubscription: 'pipeline'
+                appName: 'Azuredevops'
                 appType: webApp
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
                 deploymentMethod: auto          
@@ -132,7 +132,7 @@ stages:
     - deployment: VMDeploy
       displayName: VMDeploy
       environment:
-        name:  'prj3'
+        name:  'test'
         resourceType: VirtualMachine
       strategy:
         runOnce:
@@ -164,7 +164,7 @@ stages:
       - deployment: test_on_vm
         displayName: UI testing
         environment:
-         name: 'prj3'
+         name: 'test'
          resourceType: VirtualMachine
         strategy:
           runOnce:
