@@ -44,8 +44,8 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         backendServiceArm: '$(azureServiceConnectionId)'
         backendAzureRmResourceGroupName: 'Azuredevops'
-        backendAzureRmStorageAccountName: 'tfstate281845088'
-        backendAzureRmContainerName: 'tfstate'
+        backendAzureRmStorageAccountName: 'huent15'
+        backendAzureRmContainerName: 'huent15'
         backendAzureRmKey: 'test.terraform.tfstate'
 
     # ToDo: Run Terraform Validate    
@@ -182,7 +182,7 @@ stages:
   - deployment: FakeRestAPI
     pool:
       vmImage: 'Ubuntu-18.04'      
-    environment: <environment name>   # ToDo
+    environment: VM-TEST   # ToDo
     strategy:
       runOnce:
         deploy:
@@ -210,7 +210,7 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment:
-      name:         # ToDo: Change/provide a name
+      name: VM-TEST      
       resourceType: VirtualMachine
       tags: selenium
     strategy:
