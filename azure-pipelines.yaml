@@ -65,7 +65,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'plan'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
           environmentServiceNameAzureRM: 'd9ddb995-7287-44fa-8456-7bb86d5dfaed'
       
       - task: TerraformCLI@0
@@ -75,7 +75,7 @@ stages:
           command: 'apply'
           commandOptions: |
             -auto-approve
-          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/terraformterraform/environment/test'
           environmentServiceNameAzureRM: 'd9ddb995-7287-44fa-8456-7bb86d5dfaed'
 
 
