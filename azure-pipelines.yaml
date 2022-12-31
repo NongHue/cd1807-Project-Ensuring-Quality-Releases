@@ -1,7 +1,9 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
+pool: huent15
 
 variables:
   - group: ssh-config
+
 stages:
   - stage: Infrastructure
     displayName: Azure Resources Create with terraform
