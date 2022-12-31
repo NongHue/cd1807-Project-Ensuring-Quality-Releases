@@ -85,17 +85,17 @@ stages:
         name: huent15
       steps:
       - task: ArchiveFiles@2
-        displayName: Archive DumRestAPI
+        displayName: Archive FakeRestAPI
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dumrestapi'
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fakerestapi'
           includeRootFolder: false
           archiveType: 'zip'
-          archiveFile: '$(Build.BuildId)-dumrestapi.zip'
+          archiveFile: '$(Build.BuildId)-fakerestapi.zip'
       - task: PublishPipelineArtifact@1
         displayName: Upload package
         inputs:   
-          targetPath: $(Build.BuildId)-dumrestapi.zip
-          artifact: drop-dumrestapi
+          targetPath: $(Build.BuildId)-fakerestapi.zip
+          artifact: drop-fakerestapi
 
       - task: ArchiveFiles@2
         displayName: Archive Selenium
@@ -114,7 +114,7 @@ stages:
   - stage: DeployApp
     displayName: Deploy App to Custom VM
     jobs:
-    - deployment: DumRestAPI
+    - deployment: FakeRestAPI
       pool:
         vmImage: 'Ubuntu-20.04'
         name: huent15
@@ -129,7 +129,7 @@ stages:
                 azureSubscription: 'd9ddb995-7287-44fa-8456-7bb86d5dfaed'
                 appName: 'huent15-project03-app-AppService'
                 appType: webApp
-                package: $(Pipeline.Workspace)/drop-dumrestapi/$(Build.BuildId)-dumrestapi.zip
+                package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
                 deploymentMethod: auto          
 
     - deployment: VMDeploy
