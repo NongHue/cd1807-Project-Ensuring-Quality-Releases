@@ -57,15 +57,7 @@ stages:
           command: 'validate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
           backendServiceArm: 'd9ddb995-7287-44fa-8456-7bb86d5dfaed'
-      
-      - task: TerraformCLI@0
-        displayName: Terraform Plan
-        inputs:
-          provider: 'azurerm'
-          command: 'plan'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-          environmentServiceNameAzureRM: 'd9ddb995-7287-44fa-8456-7bb86d5dfaed'
-      
+       
       - task: TerraformCLI@0
         displayName: Terraform Apply
         inputs:
