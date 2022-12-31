@@ -38,7 +38,7 @@ stages:
           sshKeySecureFile: 'id_rsa'
 
 
-      - task: TerraformCLI
+      - task: TerraformCLI@0
         displayName: 'terraform init'
         inputs:
           provider: 'azurerm'
@@ -50,7 +50,7 @@ stages:
           backendAzureRmContainerName: 'huent15'
           backendAzureRmKey: 'terraform.tfstate'
           
-      - task: TerraformCLI
+      - task: TerraformCLI@0
         displayName: Terraform Validate
         inputs:
           provider: 'azurerm'
@@ -58,7 +58,7 @@ stages:
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
           backendServiceArm: 'd9ddb995-7287-44fa-8456-7bb86d5dfaed'
       
-      - task: TerraformCLI
+      - task: TerraformCLI@0
         displayName: Terraform Plan
         inputs:
           provider: 'azurerm'
@@ -66,7 +66,7 @@ stages:
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
           environmentServiceNameAzureRM: 'd9ddb995-7287-44fa-8456-7bb86d5dfaed'
       
-      - task: TerraformCLI
+      - task: TerraformCLI@0
         displayName: Terraform Apply
         inputs:
           provider: 'azurerm'
