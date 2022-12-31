@@ -1,5 +1,4 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
-pool: huent15
 
 variables:
   - group: ssh-config
@@ -12,6 +11,7 @@ stages:
       displayName: Terraform
       pool:
         vmImage: 'Ubuntu-20.04'
+        name: huent15
       steps:
       - task: DownloadSecureFile@1
         name: terraform
@@ -83,7 +83,8 @@ stages:
     jobs:
     - job: Build
       pool:
-         vmImage: 'Ubuntu-20.04'
+        vmImage: 'Ubuntu-20.04'
+        name: huent15
       steps:
       - task: ArchiveFiles@2
         displayName: Archive DumRestAPI
@@ -118,6 +119,7 @@ stages:
     - deployment: DumRestAPI
       pool:
         vmImage: 'Ubuntu-20.04'
+        name: huent15
       environment: 'VM-TEST'
       strategy:
         runOnce:
@@ -200,6 +202,7 @@ stages:
         displayName: Performance testing
         pool:
           vmImage: 'Ubuntu-20.04'
+          name: huent15
         steps:
           - bash: |
               sudo apt-get install openjdk-11-jre-headless -y
@@ -251,6 +254,7 @@ stages:
         displayName: Postman Test
         pool:
             vmImage: 'Ubuntu-20.04'
+            name: huent15
         steps: 
           - task: NodeTool@0
             displayName: Install Node v14.X
