@@ -256,6 +256,7 @@ stages:
             inputs:
               versionSpec: '14.x'
           - bash: |
+              sudo apt install nodejs
               node -v
               sudo npm install -g newman
               mkdir -p log/newman
