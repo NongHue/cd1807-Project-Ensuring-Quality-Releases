@@ -1,7 +1,7 @@
 # Azure subscription vars
-subscription_id = "4e780871-9657-43bf-b521-9c73706b76b1"
-client_id = "a8a50224-b866-4090-8044-a7c540383a52"
-client_secret = "80d8Q~JYphu3mDompG8EZdIF4zK37adIO3PDocC7"
+subscription_id = "a4b11da3-2642-4ae2-b8e0-ba40545a13d6"
+client_id = "006e334a-fe7b-4bb0-b070-093462c6519d" 
+client_secret = "-1J8Q~F.cBF0XWcGBCaNU2quMsmKd3i9j2nASdr4"
 tenant_id = "f958e84a-92b8-439f-a62d-4f45996b6d07"
 
 # Resource Group/Location
@@ -12,7 +12,7 @@ application_type = "huent15Application"
 # Network
 virtual_network_name = "huent15-vn"
 address_space = ["10.5.0.0/16"]
-address_prefix_test = "10.5.0.0/24"
+address_prefix_test = "10.5.1.0/24"
 
 # VM
 name_image = "VM"
