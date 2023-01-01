@@ -1,4 +1,4 @@
-name: $(Date:yyyyMMdd)$(Rev:.r)
+pullname: $(Date:yyyyMMdd)$(Rev:.r)
 
 variables:
   - group: ssh-config
@@ -127,7 +127,7 @@ stages:
               displayName: 'Deploy Azure Web App'
               inputs:
                 azureSubscription: 'fbaeb2de-9f71-4f5a-a8af-b436f37ebbc6'
-                appName: 'huent15-app-AppService'
+                appName: 'huent15-app-project3-AppService'
                 appType: webApp
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
                 deploymentMethod: auto          
@@ -256,9 +256,7 @@ stages:
             inputs:
               versionSpec: '14.x'
           - bash: |
-              sudo apt install nodejs -y
               node -v
-              sudo apt install npm -y
               sudo npm install -g newman
               mkdir -p log/newman
               newman -v

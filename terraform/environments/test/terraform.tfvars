@@ -1,13 +1,13 @@
 # Azure subscription vars
-subscription_id = "a4b11da3-2642-4ae2-b8e0-ba40545a13d6"
-client_id = "006e334a-fe7b-4bb0-b070-093462c6519d" 
-client_secret = "-1J8Q~F.cBF0XWcGBCaNU2quMsmKd3i9j2nASdr4"
+subscription_id = "a785336a-35d8-4efd-80be-93d34a9e4b66"
+client_id = "869323e2-5f5a-4caf-b6b8-638909a905d9" 
+client_secret = "_BQ8Q~Euhx8-Y~di1lK6mA5i4KCNnTqyUDD~Cc8f"
 tenant_id = "f958e84a-92b8-439f-a62d-4f45996b6d07"
 
 # Resource Group/Location
 location = "East US"
 resource_group = "Azuredevops"
-application_type = "huent15-app"
+application_type = "huent15-app-project3"
 
 # Network
 virtual_network_name = "huent15-vn"
