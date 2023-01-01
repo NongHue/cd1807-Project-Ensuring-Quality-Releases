@@ -127,7 +127,7 @@ stages:
               displayName: 'Deploy Azure Web App'
               inputs:
                 azureSubscription: 'fbaeb2de-9f71-4f5a-a8af-b436f37ebbc6'
-                appName: 'huent15-project03-app-AppService'
+                appName: 'huent15-app-AppService'
                 appType: webApp
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
                 deploymentMethod: auto          
