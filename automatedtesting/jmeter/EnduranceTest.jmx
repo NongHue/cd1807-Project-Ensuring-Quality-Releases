@@ -63,7 +63,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get ALL Employees" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get ALL Books" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -71,7 +71,7 @@
           <stringProp name="HTTPSampler.port">${port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/Employees</stringProp>
+          <stringProp name="HTTPSampler.path">/api/Books</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -82,7 +82,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post Employees" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post Books" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -104,7 +104,7 @@
           <stringProp name="HTTPSampler.port">${port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/Employees</stringProp>
+          <stringProp name="HTTPSampler.path">/api/Books</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -115,7 +115,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT Employee" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT Book" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -123,10 +123,11 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
   &quot;ID&quot;: ${ID},&#xd;
-  &quot;Name&quot;: ${Name},&#xd;
-  &quot;Address&quot;: ${Address},&#xd;
-  &quot;Phone&quot;: ${Phone},&#xd;
-  &quot;JoindDate&quot;: ${JoindDate},&#xd;
+  &quot;Title&quot;: ${Title},&#xd;
+  &quot;Description&quot;: ${Description},&#xd;
+  &quot;PageCount&quot;: ${PageCount},&#xd;
+  &quot;Excerpt&quot;: ${Excerpt},&#xd;
+  &quot;PublishDate&quot;: ${PublishDate}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -136,7 +137,7 @@
           <stringProp name="HTTPSampler.port">${port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/Employees/${ID}</stringProp>
+          <stringProp name="HTTPSampler.path">/api/Books/${ID}</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -147,12 +148,12 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Employee" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Book" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="id" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${empid}</stringProp>
+                <stringProp name="Argument.value">${bookid}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">id</stringProp>
@@ -163,7 +164,7 @@
           <stringProp name="HTTPSampler.port">${port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/Employees/${id}</stringProp>
+          <stringProp name="HTTPSampler.path">/api/Books/${id}</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -174,7 +175,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Employee" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Book" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -182,7 +183,7 @@
           <stringProp name="HTTPSampler.port">${port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/Employees/${id}</stringProp>
+          <stringProp name="HTTPSampler.path">/api/Books/${id}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -194,10 +195,10 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Employee IDs CSV" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Book IDs CSV" enabled="true">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">/home/vsts/work/1/s/automatedtesting/jmeter/emp_ids.csv</stringProp>
+        <stringProp name="filename">/home/vsts/work/1/s/automatedtesting/jmeter/book_ids.csv</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">true</boolProp>
@@ -210,7 +211,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="hostname" elementType="Argument">
             <stringProp name="Argument.name">hostname</stringProp>
-            <stringProp name="Argument.value">huent15-project03-app-appservice.azurewebsites.net</stringProp>
+            <stringProp name="Argument.value">udacity-thoanvtt-project03-app-appservice.azurewebsites.net</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="protocol" elementType="Argument">
@@ -263,10 +264,10 @@
         <stringProp name="filename">./results-endurance-test.csv</stringProp>
       </ResultCollector>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Obj employee CSV" enabled="true">
-        <stringProp name="filename">/home/vsts/work/1/s/automatedtesting/jmeter/objs_emps.csv</stringProp>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Obj book CSV" enabled="true">
+        <stringProp name="filename">/home/vsts/work/1/s/automatedtesting/jmeter/objs_books.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="variableNames">ID,Name,Address,Phone,JoindDate</stringProp>
+        <stringProp name="variableNames">ID,Title,Description,PageCount,Excerpt,PublishDate</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
         <stringProp name="delimiter">,</stringProp>
         <boolProp name="quotedData">false</boolProp>
