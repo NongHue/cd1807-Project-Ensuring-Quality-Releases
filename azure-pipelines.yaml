@@ -58,13 +58,13 @@ stages:
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
           backendServiceArm: 'fbaeb2de-9f71-4f5a-a8af-b436f37ebbc6'
        
-       # - task: TerraformCLI@0
-       # displayName: Terraform Plan
-       # inputs:
-       #   provider: 'azurerm'
-        #  command: 'plan -lock=false'
-        #  workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-        #  environmentServiceNameAzureRM: 'fbaeb2de-9f71-4f5a-a8af-b436f37ebbc6'
+      - task: TerraformCLI@0
+        displayName: Terraform Plan
+        inputs:
+          provider: 'azurerm'
+          command: 'plan -lock=false'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+          environmentServiceNameAzureRM: 'fbaeb2de-9f71-4f5a-a8af-b436f37ebbc6'
           
       - task: TerraformCLI@0
         displayName: Terraform Apply
