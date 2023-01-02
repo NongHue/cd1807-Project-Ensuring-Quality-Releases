@@ -10,7 +10,7 @@ terraform {
     storage_account_name = "huent15"
     container_name       = "huent15"
     key                  = "terraform.tfstate"
-    access_key           = "KIvt80KmTrQfpJRl00e9zoPXbw6qH3mQQwcOF8ZYy0oH5RherG3CfUgAl9yFhbQpp79JGLjCBR7F+AStyfAXrA=="
+    access_key           = "ZTnvONKHNysxz7/jbQo8JzxmsHP8koL6zjLLL1m+E7viLrbgTaNgrCaM+erhwQYBfMV5rpp2XJIb+AStTp22Og=="
   }
 }
 module "network" {
