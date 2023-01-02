@@ -13,12 +13,12 @@
 
 ## Overview
 
-This project demonstrates how to ensure quality releases using Azure cloud through the implementation of automated testing, performance monitoring and logging using Azure DevOps, Apache JMeter, Selenium, Postman and Terraform.
+This project demonstrates how to ensure quality releases using Azure cloud through the implementation of automated testing, performance monitoring and logging using Azure DevOps, Terraform, Apache JMeter, Selenium and Postman.
 
 * To use  a variety of industry leading tools, especially Microsoft Azure, to create disposable test environments and run a variety of automated tests with the click of a button.
 
 
-![intro](./screenshots/intro.png)
+![intro](images/prj-workflow.png)
 
 ## Dependencies
 | Dependency | Link |
@@ -66,8 +66,8 @@ Direct to `terraform/environments/test`
       access_key           = <access_key_value>
     }
   ```
- image.png
-  ![azurerm-backend](./screenshots/azurerm-backend.png)
+ 
+  ![azurerm-backend](./images/azurerm-backend.png)
 
 ### Create a ssh-key for Terraform
 On your terminal create a SSH key and also perform a keyscan of your github to get the known hosts.
@@ -88,13 +88,13 @@ On your terminal create a SSH key and also perform a keyscan of your github to g
 
 4. Create the Service Connection in Project Settings > Pipelines > Service Connection
 
-    ![service-connection](screenshots/service-connection.png) <br/>
+    ![service-connection](images/service-conn.png) <br/>
  
 5. Add into Pipelines --> Library --> Secure files these 2 files:
   * The private secure file : **id_rsa key**
   * The terraform tfvars file : **terraform.tfvars**
 
-    ![library-secure-files](./screenshots/library-secure-files.png)
+    ![library-secure-files](./images/secure-file.png)
 
 6. Modify the following lines on azure-pipelines.yaml before to update your own repo:
     * Get your "Known Hosts Entry" is the displayed third value that doesn't begin with # in the GitBash results:<br/>
@@ -104,7 +104,7 @@ On your terminal create a SSH key and also perform a keyscan of your github to g
     ```
     * Take note value in highlight below to fill **knownHostsEntry**
 
-    ![azurerm-backend](screenshots/ssh-keyscan.png)
+    ![azurerm-backend](images/ssh-keyscan.png)
 
     | # #  | parameter | description |
     | ------ | ------ | ------ |
@@ -115,7 +115,7 @@ On your terminal create a SSH key and also perform a keyscan of your github to g
 7. Create groups of variables
   Create groups of variables that you can share across multiple pipelines. 
   * Choose "+Variable groups" > Add name groups of variables : ssh-config > Add **knownHostsEntry**, **sshPublicKey**, **StorageAccountName** and value this in Variables > Select type to secret > Save <br/>
-  ![screen shot](screenshots/variable-group.png) <br/>  
+  ![screen shot](images/variables.png) <br/>  
 
 8. Create a New Pipeline in your Azure DevOPs Project
   - Located at GitHub
@@ -125,26 +125,28 @@ On your terminal create a SSH key and also perform a keyscan of your github to g
 
     8.1. Tab Pipelines -> Create Pipeline -> Where is your code? Choose Github (Yaml) -> Select Repo -> Configure your pipeline
     : Choose "Existing Azure Pipelines yaml file" > Continue > Run <br/>
-      ![img](screenshots/select-existing-yaml-file.png) <br/>
+      ![img](images/config-pipeline.png) <br/>
 
-      ![img](screenshots/run-pipeline.png) <br/>
+      ![img](images/run-pipeline1.png) <br/>
 
     8.2. Apcept permission for Azure Resources Create with terraform <br/>
-      ![img](screenshots/permission-permit.png) <br/>
+      ![img](images/terra-permit.png) <br/>
 
     8.3. Go to Azure pipeline -> Environments -> you can see Environments name is "TEST" -> Choose and select "Add resource" -> choose "Virtual machines" > Select "Linux" and Choose icon "Copy command ..." > Close <br>
     Something similar to </br>
-      ![img1](screenshots/devops-add-resource.png) </br>
-      ![img2](screenshots/devops-add-resource-script.png)
+      ![img1](images/new-env1.png) </br>
+
+      ![img2](images/new-env.png) </br>
+    
 
     8.5. SSH into the VM created using the Public IP -> Enter command you just copy above step -> Run it -> Success if you see result like this 
-    ![img3](screenshots/devops-excute-add-resource-script.png) <br>
+    ![img3](images/env-conn.png) <br>
       
-    ![img4](screenshots/excute-script-in-vm.png)
+    ![img4](images/env-conn2.png)
 
     Get at the end a result like:
 
-    ![img5](screenshots/devops-result-add-resource-vm.png)
+    ![img5](images/environment.png)
 
     8.6. Back to pipeline and re-run
 
@@ -153,12 +155,12 @@ On your terminal create a SSH key and also perform a keyscan of your github to g
 
     Azure Resources Create --> Build --> Deploy App --> Test
 
-    ![img](./screenshots/automation-test-result.png)
+    ![img](./images/pipeline-stages.png)
 
 ### Configure Logging for the VM in the Azure Portal
 1. Create a Log Analytics workspace. It will be created on the same RG used by terraform
 
-    ![img](./screenshots/log-analytics-workspace.png)
+    ![img](./images/log-analytic.png)
 
 2. Set up email alerts in the App Service:
  
@@ -190,14 +192,14 @@ On your terminal create a SSH key and also perform a keyscan of your github to g
   * Go to the App Service web page and navigate on the links and also generate 404 not found , example:
 
     ```html
-    https://udacity-thoanvtt-project03-app-appservice.azurewebsites.net
+    https://huent15-app-project3-appservice.azurewebsites.net
 
-    https://udacity-thoanvtt-project03-app-appservice.azurewebsites.net/gggg  ( click this many times so alert will be raised too)
+    https://huent15-app-project3-appservice.azurewebsites.net/asaf  ( click this many times so alert will be raised too)
     ```
 
-  * After some minutes ( 3 to 10 minutes) , check the email configured since an alert message will be received. and also check the Log Analytics Logs , so you can get visualize the logs and analyze with more detail.
+  * After some minutes (about 15 minutes) , check the email configured since an alert message will be received. and also check the Log Analytics Logs , so you can get visualize the logs and analyze with more detail.
 
-  ![img](screenshots/azure-monitor-alert-triggered.png)
+  ![img](images/mail-alert.png)
 
 
 ## Monitoring And Logging Result
@@ -205,59 +207,55 @@ Configure Azure Log Analytics to consume and aggregate custom application events
 
 ### Environment Creation & Deployment
   #### The pipeline build results page
-  ![Pipeline-Result](screenshots/automation-test-result.png)
+  ![Pipeline-Result](images/pipeline-stages.png)
 
   #### Terraform Init
-  ![Terraform](screenshots/terraform-init-in-pipeline.png)
+  ![Terraform](images/terra-init.png)
 
   #### Terraform Validate
-  ![Terraform](screenshots/terraform-validate-in-pipeline.png)
+  ![Terraform](images/terra-validate.png)
 
   #### Terraform Plan
-  ![Terraform](screenshots/terraform-plan-in-pipeline-1.png) <br>
+  ![Terraform](images/terra-plan.png) <br>
 
-  ![Terraform](screenshots/terraform-plan-in-pipeline-2.png) <br>
-
+  
   #### Terraform Apply
-  ![Terraform](screenshots/terraform-apply-in-pipeline-1.png) <br>
-
-  ![Terraform](screenshots/terraform-apply-in-pipeline-2.png) <br>
+  ![Terraform](images/terra-apply.png) <br>
+  <br>
 ### Automated Testing
 
   #### FakeRestAPI
-  ![DeployWebApp](screenshots/deploy-azure-web-app.png)
+  ![DeployWebApp](images/deploy-webapp.png)
 
-  ![FakeRestAPI](screenshots/fakerestapi.png)
+  ![FakeRestAPI](images/fakeapi-app.png)
 
   #### JMeter log output
-  ![JMeterLogOutput](screenshots/jmeter-log-output-stress-test.png)
 
-  ![JMeterLogOutput](screenshots/jmeter-log-output-endurance-test.png)
+  ![JMeterLogOutput](images/stress-run.png)
+
+  ![JMeterLogOutput](images/end-run.png)
 
   #### JMeter Endurance Test                                                                      
-  ![Endurance test](screenshots/publish-endurance-test-results.png)
+ ![JMeterLogOutput](images/stress-test.png)
 
-  #### JMeter Stress Test
-  ![Stress test](screenshots/publish-stress-test-results.png)
+  ![JMeterLogOutput](images/endur-test.png)
 
   #### Selenium
-  ![Selenium test](screenshots/selenium-logging.png)
-
-  ![Selenium test](screenshots/selenium-logging.png)
+  ![Selenium test](images/selenium.png)
 
   #### Regression Tests
-  ![Regression test](screenshots/test-run-regression-postman.png)
+  ![Regression test](images/reg-test-az.png)
 
-  ![Regression test](screenshots/junit-regression-test-summary.png)
+  ![Regression test](images/reg-test-result.png)
 
-  ![Regression test](screenshots/junit-regression-test-result.png)
+  ![Regression test](images/test-runs.png)
 
   #### Validation Tests
-  ![Validation test](screenshots/test-run-validation-postman.png)
+  ![Validation test](images/validation-test.png)
 
-  ![Validation test](screenshots/junit-validation-test-summary.png)
+  ![Validation test](images/validate-test-result.png)
 
-  ![Validation test](screenshots/junit-validation-test-result.png)
+  ![Validation test](images/test-runs.png)
 
   #### The artifact is downloaded from the Azure DevOps and available under the /projectartifactsrequirements folder.
 
@@ -266,27 +264,27 @@ Configure Azure Log Analytics to consume and aggregate custom application events
 ### Monitoring & Observability
 
   #### Alert Rule:
-  ![Alert Rule](screenshots/404-alert-rule.png)
+  ![Alert Rule](images/alert-rule.png)
 
-  ![The Triggered Alert](screenshots/the-alert-triggered.png)
+  ![The Triggered Alert](images/alert.png)
 
 
   #### Triggered Alert:
-  ![Triggered Email Alert](screenshots/azure-monitor-alert-triggered.png)
+  ![Triggered Email Alert](images/alert-report.png)
 
-  ![The Graphs 404 Alert](screenshots/azure-alert-rule.png)
+  ![The Graphs 404 Alert](images/mail-alert.png)
 
   #### Logs from Azure Log Analytics
     
     Go to Log Analytics Workspace , to run the  following queries:
 
-    ```kusto
+    ```
     AppServiceHTTPLogs
     | where TimeGenerated < ago(2h)
       and ScStatus == '404'
     ```
 
-  ![Log Analytics](screenshots/app-service-http-logs.png)
+  ![Log Analytics](images/app-log.png)
     
 ## Clean Up
 
